@@ -1,0 +1,19 @@
+import 'dart:async';
+​
+void main() {
+  List convidados = ["Daniel", "João", "Paulo"];
+​
+  final controller = StreamController();
+​
+  final subscription = controller.stream.where((data) {
+    return convidados.contains(data);
+  }).listen((data) {
+    print(data);
+  });
+​
+  controller.sink.add("Daniel");
+  controller.sink.add("Jorge");
+​
+  controller.close();
+}
+
